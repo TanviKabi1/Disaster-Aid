@@ -4,6 +4,7 @@ import { useSimulation } from '../context/SimulationContext';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Globe as GlobeIcon, Zap, History, TrendingUp, AlertCircle, ChevronRight, Activity, Filter, Clock } from 'lucide-react';
 import axios from 'axios';
+import API_BASE_URL from '../api/config';
 import { useNavigate } from 'react-router-dom';
 import SecurityLockout from '../components/SecurityLockout';
 
@@ -80,7 +81,7 @@ export default function GlobeIntelligence() {
   const fetchHistory = async (country) => {
     setLoading(true);
     try {
-      const res = await axios.get(`http://localhost:5000/historical?country=${country}`);
+      const res = await axios.get(`${API_BASE_URL}/historical?country=${country}`);
       setHistoricalData(res.data);
       appendLiveLog(`Intelligence profile synchronized for ${country}`);
     } catch (e) {

@@ -3,6 +3,7 @@ import { useSimulation } from '../context/SimulationContext';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FileText, AlertCircle, Zap, ShieldCheck, ChevronRight, Activity, Search, Globe } from 'lucide-react';
 import axios from 'axios';
+import API_BASE_URL from '../api/config';
 import SecurityLockout from '../components/SecurityLockout';
 
 function Shimmer() {
@@ -24,7 +25,7 @@ export default function AIReports() {
     const fetchReports = async () => {
       setLoading(true);
       try {
-        const res = await axios.get('http://localhost:5000/ai-reports');
+        const res = await axios.get(`${API_BASE_URL}/ai-reports`);
         setAiReports(res.data);
         if (res.data.length > 0) setSelectedReport(res.data[0]);
       } catch (e) {

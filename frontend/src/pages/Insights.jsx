@@ -8,6 +8,7 @@ import {
 import { BarChart3, TrendingUp, AlertTriangle, Target, Globe, History, LayoutDashboard, ChevronRight, Activity } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import axios from 'axios';
+import API_BASE_URL from '../api/config';
 
 const COLORS = ['#ef4444', '#3b82f6', '#f59e0b', '#10b981', '#8b5cf6'];
 
@@ -54,7 +55,7 @@ export default function Insights() {
   const fetchHistory = async (country) => {
     setLoading(true);
     try {
-      const res = await axios.get(`http://localhost:5000/historical?country=${country}`);
+      const res = await axios.get(`${API_BASE_URL}/historical?country=${country}`);
       setHistoricalData(res.data);
     } catch (e) {
       console.error(e);

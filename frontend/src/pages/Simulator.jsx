@@ -1,6 +1,7 @@
 import { useState, useCallback, useEffect } from 'react';
 import axios from 'axios';
 import { useSimulation } from '../context/SimulationContext';
+import API_BASE_URL from '../api/config';
 import LeafletMap from '../components/LeafletMap';
 import DamageCards from '../components/DamageCards';
 import AIExplanation from '../components/AIExplanation';
@@ -60,7 +61,7 @@ export default function Simulator() {
     appendLiveLog(`Initiating ${params.scenario} projection for ${params.city}...`);
     
     try {
-      const res = await axios.post('http://localhost:5000/analyze', params);
+      const res = await axios.post(`${API_BASE_URL}/analyze`, params);
       const result = { ...res.data, params, timestamp: new Date().toISOString() };
       setSimulationResult(result);
       addToHistory(result);
