@@ -13,7 +13,7 @@ import { SimulationProvider } from './context/SimulationContext';
 function App() {
   return (
     <SimulationProvider>
-      <Router>
+      <Router basename={import.meta.env.BASE_URL}>
         <div className="flex flex-col h-screen bg-background text-white overflow-hidden">
           <Navbar />
           <main className="flex-1 overflow-hidden">
