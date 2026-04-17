@@ -2,6 +2,7 @@ services:
   - type: web
     name: disaster-aid-backend
     runtime: python
+    plan: free
     buildCommand: pip install -r backend/requirements.txt
     startCommand: cd backend && gunicorn app:app
     envVars:
